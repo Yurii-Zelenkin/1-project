@@ -8,24 +8,27 @@
     <title>WC_project1_Zelenkin_Jurii</title>
   </head>
   <body>
-    <!-- --------------------------------------------------------------------------- -->
     <!-- Header start -->
 
     <header class="header">
-      <!-- Бургер меню -->
-      <nav class="header__menu">
-        <button class="header__menu-btn btn"></button>
-      </nav>
-      <div class="header__divider-768w"></div>
-      <div class="header__logo"></div>
-      <div class="header__divider-320w"></div>
-      <button class="header__call-btn-768w btn"></button>
-      <button class="header__chat-btn-768w btn"></button>
-      <button class="header__profile-btn-768w btn"></button>
-      <div class="header__divider-768w"></div>
+      <div class="header__general">
+        <button class="header__btn-menu btn"></button>
+        <div class="header__container-logo">
+          <button class="header__btn-logo btn"></button>
+          <span class="header__decor"></span>
+        </div>
+      </div>
+      <div class="header__action">
+        <button class="header__btn-call btn"></button>
+        <button class="header__btn-chat btn"></button>
+        <div class="header__container-profile">
+          <button class="header__btn-profile btn"></button>
+          <span class="header__decor"></span>
+        </div>
+      </div>
 
       <!-- Сервисные кнопки  -->
-      <div class="header__service-btn">
+      <div class="header__service">
         <div class="header__repair">
           <button id="repair-btn" class="header__repair-btn btn"></button>
           <label for="repair-btn">Оставить заявку</label>
@@ -45,37 +48,50 @@
     <main class="main">
       <h1 class="main__title">Услуги и сервисы</h1>
       <nav class="slider-menu">
-        <div class="slider-menu__container">
-          <button class="slider-menu__item slider-menu__item--active">
-            Ремонтируемые бренды
-          </button>
-          <button class="slider-menu__item">Ремонтируемые устройства</button>
-          <button class="slider-menu__item">Цены на услуги</button>
-          <button class="slider-menu__item">Адреса сервисных центров</button>
-          <button class="slider-menu__item">Специальные цены</button>
-        </div>
+        <ul class="slider-menu__container">
+          <li class="slider-menu__item">
+            <a href="#" class="slider-menu__link slider-menu__link--active"
+              >Ремонтируемые бренды</a
+            >
+          </li>
+          <li class="slider-menu__item">
+            <a href="#" class="slider-menu__link">Ремонтируемые устройства</a>
+          </li>
+          <li class="slider-menu__item">
+            <a href="#" class="slider-menu__link">Цены на услуги</a>
+          </li>
+          <li class="slider-menu__item">
+            <a href="#" class="slider-menu__link">Адреса сервисных центров</a>
+          </li>
+          <li class="slider-menu__item">
+            <a href="#" class="slider-menu__link">Специальные цены</a>
+          </li>
+        </ul>
       </nav>
       <section class="description">
         <div class="description-container">
-          <p class="description__text">
-            Мы являемся авторизованным сервисным центром по ремонту техники
-            Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с
-            официальной гарантией производителя.
-            <br />
-            <br />
-            Мы успешно работаем с 1992 года и заслужили репутацию надежного
-            партнера, что подтверждает большое количество постоянных клиентов.
-            Мы гордимся тем, что к нам обращаются по рекомендациям и, в свою
-            очередь, советуют нас родным и близким.
-            <br />
-          </p>
+          <article class="description__text">
+            <p>
+              Мы являемся авторизованным сервисным центром по ремонту техники
+              Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с
+              официальной гарантией производителя.
+            </p>
+            <p>
+              Мы успешно работаем с 1992 года и заслужили репутацию надежного
+              партнера, что подтверждает большое количество постоянных клиентов.
+              Мы гордимся тем, что к нам обращаются по рекомендациям и, в свою
+              очередь, советуют нас родным и близким.
+            </p>
+          </article>
           <div class="readmore">
             <div class="readmore__container">
               <button class="readmore__container-btn">Читать далее</button>
             </div>
           </div>
         </div>
-        <div class="main__logo"></div>
+        <div class="main-logo">
+          <img src="/img/main/mainlogo.jpg" alt="Логотип сайта" />
+        </div>
       </section>
     </main>
     <!-- Main end-->
