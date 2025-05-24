@@ -153,28 +153,32 @@ html {
 
 /*---------- Start slider Menu-------------------- */
 .slider-menu {
-  width: 320px;
   overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding: 0 16px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
 }
-
+.slider-menu:active {
+  cursor: grabbing;
+}
 .slider-menu::-webkit-scrollbar {
-  display: none;
+  height: 4px;
 }
 
 .slider-menu__container {
+  position: relative;
   display: inline-flex;
-  white-space: nowrap;
+  padding: 0 16px;
   gap: 16px;
   list-style: none;
-  padding: 0;
   margin: 0;
+  min-width: max-content;
+  z-index: 1;
 }
 
 .slider-menu__item {
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 .slider-menu__link {
   display: inline-block;
@@ -189,14 +193,15 @@ html {
   border: 2px solid transparent;
   border-radius: 6px;
   background: transparent;
+  transition: all 0.3s ease;
 }
 
 .slider-menu__link--active {
-  border: 2px solid #b8ffec;
-  border-radius: 6px;
-  background: #ffffff;
+  background: #fff;
+  border: 2px solid #b8ffec !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 /*---------- end Menu-------------------- */
@@ -214,9 +219,15 @@ html {
   line-height: 18px;
   margin-left: 16px;
   width: 288px;
-  height: 90px;
   letter-spacing: 0.2px;
   overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 90px;
+  margin-bottom: 16px;
+}
+
+.description__text.expanded {
+  max-height: 1000px;
 }
 
 .description__text p + p {
@@ -224,25 +235,44 @@ html {
 }
 
 .readmore__container {
-  width: 132px;
+  /* width: 132px; */
   height: 24px;
   margin-left: 16px;
   margin-top: 8px;
 }
 
 .readmore__container-btn {
-  margin-left: 8px;
-  width: 140px;
-  height: 24px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  background-image: url("data:image/svg+xml,%3Csvg width='8' height='11' viewBox='0 0 8 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.50008 0.500076L4.00008 3.00008L1.50008 0.500076C1.22393 0.223933 0.776218 0.223933 0.500076 0.500076C0.223933 0.776218 0.223933 1.22393 0.500075 1.50008L3.29297 4.29297C3.68349 4.68349 4.31666 4.68349 4.70718 4.29297L7.50008 1.50008C7.77622 1.22393 7.77622 0.776218 7.50008 0.500076C7.22393 0.223933 6.77622 0.223933 6.50008 0.500076ZM6.50008 6.50008L4.00008 9.00008L1.50008 6.50008C1.22393 6.22393 0.776218 6.22393 0.500076 6.50008C0.223933 6.77622 0.223933 7.22393 0.500075 7.50008L3.29297 10.293C3.68349 10.6835 4.31666 10.6835 4.70718 10.293L7.50008 7.50008C7.77622 7.22393 7.77622 6.77622 7.50008 6.50008C7.22393 6.22393 6.77622 6.22393 6.50008 6.50008Z' fill='%2341F6D7'/%3E%3C/svg%3E%0A");
-  background-repeat: no-repeat;
-  background-position: left center;
+  position: relative;
+  padding-left: 24px;
   font-family: "TTLakes-Medium";
   font-size: 16px;
+  line-height: 24px;
+  color: #1b1c21;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
+.readmore__container-btn:hover {
+  color: #7e7e82;
+}
+
+.readmore__container-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M14.5001 7.50008L12.0001 10.0001L9.50008 7.50008C9.22393 7.22393 8.77622 7.22393 8.50008 7.50008C8.22393 7.77622 8.22393 8.22393 8.50008 8.50008L11.293 11.293C11.6835 11.6835 12.3167 11.6835 12.7072 11.293L15.5001 8.50008C15.7762 8.22393 15.7762 7.77622 15.5001 7.50008C15.2239 7.22393 14.7762 7.22393 14.5001 7.50008ZM14.5001 13.5001L12.0001 16.0001L9.50008 13.5001C9.22393 13.2239 8.77622 13.2239 8.50008 13.5001C8.22393 13.7762 8.22393 14.2239 8.50008 14.5001L11.293 17.293C11.6835 17.6835 12.3167 17.6835 12.7072 17.293L15.5001 14.5001C15.7762 14.2239 15.7762 13.7762 15.5001 13.5001C15.2239 13.2239 14.7762 13.2239 14.5001 13.5001Z' fill='%2341F6D7'/%3E%3C/svg%3E%0A");
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.readmore__container-btn.expanded::before {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 /*----------------- end Style описание----------- */
 
 /* -------------------main logo-------------- */
@@ -257,6 +287,12 @@ img {
   .header__action,
   label {
     display: none;
+  }
+
+  .slider-menu {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 16px;
   }
 
   .main-logo {
@@ -274,7 +310,10 @@ img {
 
   .description__text {
     width: 312px;
-    height: 160px;
+    max-height: 160px;
+  }
+  .description__text.expanded {
+    max-height: 2000px;
   }
   .header__action {
     display: flex;
@@ -300,10 +339,8 @@ img {
   }
 
   .slider-menu {
-    margin-top: 24px;
-    margin-left: 24px;
-    width: 768px;
-    padding: 0;
+    margin: 0 -24px;
+    padding: 0 24px;
   }
 
   .description {
@@ -356,17 +393,19 @@ img {
 
   .description__text {
     width: 490px;
-    height: 160px;
+    max-height: 500px;
   }
 
   .main {
     width: 1120px;
   }
-
+  .slider-container {
+    max-width: 1120px;
+  }
   .slider-menu {
-    margin-top: 8px;
-    margin-left: 24px;
-    width: 1120px;
+    width: 100%;
+    padding: 0 32px;
+    margin-left: 0;
   }
 
   .description__text {
